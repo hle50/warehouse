@@ -13,14 +13,18 @@ import Colors from '../../constants/Colors';
 export default class MenuItem extends Component {
   constructor(props) {
     super(props);
+    this.navigate = this.navigate.bind(this);
   }
   
+  navigate(){
+    this.props.navigation.navigate(this.props.name)
+  }
   render() {
     const {text, icon, type} = this.props;
     return (
       
       <View style={styles.container}>
-        <TouchableOpacity style={{flex: 1, flexDirection: 'row',}}>
+        <TouchableOpacity onPress={this.navigate} style={{flex: 1, flexDirection: 'row',}}>
           <View style={styles.icon}>
             <Icon
               containerStyle={{alignItems: 'flex-start'}}

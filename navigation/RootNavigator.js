@@ -3,32 +3,47 @@ import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import LoginScreen from '../screens/LoginScreen';
 import FeedScreen from '../screens/FeedScreen';
 import SideBar from '../components/sidebar/SideBar';
+import ProductScreen from '../screens/ProductScreen';
+
 const LoginStack = StackNavigator({
-    LoginScreen: {
-        screen: LoginScreen
-    },
-    // SignUpScreen: {
-    //     screen: SignUpScreen
-    // },
-    // ForgotPasswordScreen: {
-    //     screen: ForgotPasswordScreen
-    // }
-},{
-    headerMode: 'none'
+  LoginScreen: {
+    screen: LoginScreen
+  },
+  // SignUpScreen: {
+  //     screen: SignUpScreen
+  // },
+  // ForgotPasswordScreen: {
+  //     screen: ForgotPasswordScreen
+  // }
+}, {
+  headerMode: 'none'
 });
 
 const MainStack = StackNavigator({
-    Home: {
-        screen: FeedScreen
-    },
-
-
+  Home: {
+    screen: FeedScreen
+  },
+  
+  
 }, {
-    headerMode: 'screen',
-    navigationOptions:{
-        gesturesEnabled:false,
-        headerBackTitle: null
-    }
+  headerMode: 'screen',
+  navigationOptions: {
+    gesturesEnabled: false,
+    headerBackTitle: null
+  }
+});
+const ProductStack = StackNavigator({
+  Product: {
+    screen: ProductScreen
+  },
+  
+  
+}, {
+  headerMode: 'screen',
+  navigationOptions: {
+    gesturesEnabled: false,
+    headerBackTitle: null
+  }
 });
 // const SubmitRequestStack = StackNavigator({
 //     SubmitRequest:{
@@ -46,9 +61,10 @@ const MainStack = StackNavigator({
 //     contentComponent: props => <SideBar navigation={props.navigation}/>
 // });
 const MainDrawer = DrawerNavigator({
-    Home: {screen: MainStack},
-},{
-    contentComponent: props => <SideBar navigation={props.navigation}/>
+  Home: {screen: MainStack},
+  Product: {screen: ProductStack},
+}, {
+  contentComponent: props => <SideBar navigation={props.navigation}/>
 });
 // const SubmitRequestDrawer = DrawerNavigator({
 //     SubmitRequest: {screen: SubmitRequestStack},
@@ -70,25 +86,25 @@ const MainDrawer = DrawerNavigator({
 // });
 
 export default RootNavigator = StackNavigator({
-    LoginMain: {
-        screen: LoginStack
-    },
-    Main: {
-        screen: MainDrawer
-    },
-    // Profile: {
-    //     screen: ProfileDrawer
-    // },
-    // SubmitRequest:{
-    //     screen: SubmitRequestDrawer
-    // },
-    // MakeMyDeskAvailable:{
-    //     screen: MakeMyDeskAvailableDrawer
-    // }
-
+  LoginMain: {
+    screen: LoginStack
+  },
+  Main: {
+    screen: MainDrawer
+  },
+  // Profile: {
+  //     screen: ProfileDrawer
+  // },
+  // SubmitRequest:{
+  //     screen: SubmitRequestDrawer
+  // },
+  // MakeMyDeskAvailable:{
+  //     screen: MakeMyDeskAvailableDrawer
+  // }
+  
 }, {
-    headerMode: 'none',
-    navigationOptions:{
-        gesturesEnabled:false,
-    }
+  headerMode: 'none',
+  navigationOptions: {
+    gesturesEnabled: false,
+  }
 });

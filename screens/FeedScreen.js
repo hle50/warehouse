@@ -3,7 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import DrawerButton from '../components/navigations/DrawerButton';
 import Styles from '../constants/Styles';
@@ -26,6 +27,7 @@ export default class FeedScreen extends Component {
   }
   
   render() {
+    const {navigation} = this.props;
     return (
       <ScrollView style={styles.container}>
         <View style={styles.wrapper}>
@@ -34,20 +36,22 @@ export default class FeedScreen extends Component {
           <FeedItem text='Not shipped packages' number="5"/>
           <FeedItem text='Ship error' number="5"/>
         </View>
-  
+        
         <View style={styles.wrapper}>
           <Text style={styles.header}>Shipper online</Text>
-          <FeedItem text='Yasuo' />
-          <FeedItem text='Leesin' />
-          <FeedItem text='Riven' />
+          <FeedItem text='Yasuo'/>
+          <FeedItem text='Leesin'/>
+          <FeedItem text='Riven'/>
         </View>
-  
+        
         <View style={styles.wrapper}>
-          <Text style={styles.header}>Warehouse</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Product')}>
+            <Text style={styles.header}>Warehouse</Text>
+          </TouchableOpacity>
           <FeedItem text='Available' number="15"/>
           <FeedItem text='Not available' number="5"/>
         </View>
-        
+      
       </ScrollView>
     )
   }
